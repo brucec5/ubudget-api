@@ -17,8 +17,7 @@ ActiveRecord::Schema.define(:version => 20130425204608) do
     t.string   "name"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
-    t.string   "hashed_password"
-    t.string   "salt"
+    t.string   "password_digest"
   end
 
 end

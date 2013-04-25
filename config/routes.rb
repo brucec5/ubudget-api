@@ -1,5 +1,6 @@
 UbudgetApi::Application.routes.draw do
   resources :users, except: [:new, :edit]
+  resources :session, only: [:create]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
