@@ -1,23 +1,29 @@
 class UsersController < ApplicationController
+
+  # Don't check if a user is logged in before creating a user
+  skip_before_filter :check_session, :only => [:create]
+
   # GET /users
-  # GET /users.json
+  # Keeping index and show around for now for debugging
   def index
     @users = User.all
     render :json => @users
   end
 
   # GET /users/1
-  # GET /users/1.json
   def show
     @user = User.find(params[:id])
 
-    render :json => @user
+    render :json => @user.as_json(:except => :password_digest)
   end
 
   # POST /users
-  # POST /users.json
+  # Create a new user if the password and password confirmation match, and
+  # the username is not yet taken.
   def create
-    @user = User.new(params[:user])
+    @user = User.new(:username => params[:username],
+                     :password => params[:password],
+                     :password_confirmation => params[:password_confirmation])
 
     if @user.save
       session[:user_id] = @user.id
@@ -25,26 +31,5 @@ class UsersController < ApplicationController
     else
       render :json => @user.errors, :status => :unprocessable_entity
     end
-  end
-
-  # PATCH/PUT /users/1
-  # PATCH/PUT /users/1.json
-  def update
-    #@user = User.find(params[:id])
-
-    #if @user.update_attributes(params[:user])
-      #head :no_content
-    #else
-      #render json: @user.errors, status: :unprocessable_entity
-    #end
-  end
-
-  # DELETE /users/1
-  # DELETE /users/1.json
-  def destroy
-    #@user = User.find(params[:id])
-    #@user.destroy
-
-    #head :no_content
   end
 end
