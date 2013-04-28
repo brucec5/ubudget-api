@@ -1,6 +1,6 @@
 class SessionController < ApplicationController
 
-  # Don't check to see if a user is logged in before loggin in!
+  # Don't check to see if a user is logged in before logging in!
   skip_before_filter :check_session
 
   # POST /session
