@@ -59,7 +59,12 @@ module UbudgetApi
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
 
-    # Enable rack-ssl-enforcer
-    config.middleware.use Rack::SslEnforcer
+    # Turn off SSL by default (overridden in production)
+    config.force_ssl = false
+
+    config.api_only = false
+    config.middleware.use Rack::MethodOverride
+    config.session_store = true
+
   end
 end
