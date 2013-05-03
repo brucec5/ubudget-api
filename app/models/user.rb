@@ -1,12 +1,10 @@
 class User < ActiveRecord::Base
   has_secure_password
 
-  attr_accessible :username, :password, :password_confirmation
+  attr_accessible :username, :password
 
   validates_presence_of :username
   validates_uniqueness_of :username
-  validates_presence_of :password_confirmation, :on => :create
-  validates_confirmation_of :password, :on => :create
 
   PROTECTED_ATTRIBUTES = [:password_digest]
 
