@@ -1,7 +1,7 @@
 class SessionController < ApplicationController
 
   # Don't check to see if a user is logged in before logging in!
-  skip_before_filter :check_session
+  skip_before_filter :check_session, :only => :create
 
   # POST /session
   # Used for login
@@ -14,5 +14,14 @@ class SessionController < ApplicationController
     else
       render :json => { :login => "Bad username/password" }, :status => :unauthroized
     end
+  end
+
+  # GET /session
+  # Used to check if there is currently an active, valid user session
+  # Will result in 401 unathorized if there is not one.
+  def index
+    # Use the check_session filter to perform the meat of this
+    # Just return a success JSON result.
+    render :json => { :status => "Logged In" }
   end
 end

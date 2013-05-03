@@ -1,6 +1,6 @@
 UbudgetApi::Application.routes.draw do
   resources :users, only: [:index, :show, :create]
-  resources :session, only: [:create]
+  resources :session, only: [:index, :create]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
