@@ -18,12 +18,10 @@ class UsersController < ApplicationController
   end
 
   # POST /users
-  # Create a new user if the password and password confirmation match, and
-  # the username is not yet taken.
+  # Create a new user if the user name is not taken.
   def create
     @user = User.new(:username => params[:username],
-                     :password => params[:password],
-                     :password_confirmation => params[:password_confirmation])
+                     :password => params[:password])
 
     if @user.save
       session[:user_id] = @user.id
