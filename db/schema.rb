@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130504021210) do
+ActiveRecord::Schema.define(:version => 20130504224156) do
 
   create_table "budgets", :force => true do |t|
     t.integer  "user_id"
@@ -21,9 +21,9 @@ ActiveRecord::Schema.define(:version => 20130504021210) do
     t.boolean  "recur"
     t.datetime "start_date"
     t.string   "recurrence_duration"
-    t.integer  "other_duration"
     t.datetime "created_at",                         :null => false
     t.datetime "updated_at",                         :null => false
+    t.integer  "other_duration"
   end
 
   create_table "entries", :force => true do |t|
