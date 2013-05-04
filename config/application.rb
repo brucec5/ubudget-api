@@ -66,5 +66,7 @@ module UbudgetApi
     config.middleware.use Rack::MethodOverride
     config.session_store = true
 
+    # Enable the use of automatic error routing
+    config.exceptions_app = self.routes
   end
 end
