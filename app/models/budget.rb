@@ -26,7 +26,10 @@ class Budget < ActiveRecord::Base
 
   def as_json(*args)
     hash = super(*args)
+
     sum = entries.reduce(0) { |acc, e| acc + e.amount }
-    hash.merge!(:current_amount => sum)
+    start_date_millisecond = start_date.to_i * 1000
+
+    hash["budget"].merge!("current_amount" => sum, "start_date" => start_date_millisecond)
   end
 end
