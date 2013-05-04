@@ -18,7 +18,7 @@ class EntriesController < ApplicationController
   # Creates a new entry, returning the ID in JSON.
   def create
     entry = Entry.new(params.slice(:amount, :notes, :expenditure_date, :budget_id))
-    
+
     if entry.save
       render :json => { :id => entry.id }, :status => :created
     else

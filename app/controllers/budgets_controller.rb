@@ -1,5 +1,5 @@
 class BudgetsController < ApplicationController
-  
+
   # GET /budgets
   # Get a list of the current user's budgets
   def index
