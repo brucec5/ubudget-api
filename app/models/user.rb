@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+  has_many :budgets, :dependent => :destroy
+  has_many :entries, :through => :budgets
+
   has_secure_password
 
   attr_accessible :username, :password

@@ -1,6 +1,12 @@
 UbudgetApi::Application.routes.draw do
-  resources :users, only: [:index, :show, :create]
-  resources :session, only: [:index, :create]
+  resources :users, :only => [:index, :show, :create]
+  resources :session, :only => [:index, :create]
+  resources :budgets
+  resources :entries
+
+  # Cause all of the following errors to redirect to a handler
+  match '/404', :to => "errors#not_found"
+  match '/500', :to => "errors#server_error"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
