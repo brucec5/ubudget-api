@@ -4,6 +4,6 @@ class ChangeBudgetStartDateToDate < ActiveRecord::Migration
   end
 
   def down
-    change_column :budgets, :start_date, :date
+    change_column :budgets, :start_date, :datetime
   end
 end
