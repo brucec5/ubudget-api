@@ -11,18 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130511235107) do
+ActiveRecord::Schema.define(:version => 20130515014357) do
 
   create_table "budgets", :force => true do |t|
     t.integer  "user_id"
     t.string   "budget_name"
     t.integer  "amount"
-    t.integer  "amount_so_far",       :default => 0
     t.boolean  "recur"
     t.date     "start_date"
     t.string   "recurrence_duration"
-    t.datetime "created_at",                         :null => false
-    t.datetime "updated_at",                         :null => false
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
     t.integer  "other_duration"
   end
 

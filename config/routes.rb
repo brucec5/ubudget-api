@@ -1,7 +1,11 @@
 UbudgetApi::Application.routes.draw do
   resources :users, :only => [:index, :show, :create]
   resources :session, :only => [:index, :create]
-  resources :budgets
+  resources :budgets do
+    collection do
+      get 'with_entries'
+    end
+  end
   resources :entries
 
   # Cause all of the following errors to redirect to a handler
