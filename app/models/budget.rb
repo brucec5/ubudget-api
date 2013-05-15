@@ -23,12 +23,4 @@ class Budget < ActiveRecord::Base
   validates :other_duration,
     :numericality => { :greater_than => 0 },
     :if => Proc.new { |b| b.recurrence_duration == "OTHER" }
-
-  def as_json(*args)
-    hash = super(*args)
-
-    sum = entries.reduce(0) { |acc, e| acc + e.amount }
-
-    hash["budget"].merge!("current_amount" => sum)
-  end
 end

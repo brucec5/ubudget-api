@@ -3,9 +3,15 @@ class BudgetsController < ApplicationController
   # GET /budgets
   # Get a list of the current user's budgets
   def index
-    # Do the include to avoid an n+1 query when calculating the amount so far
-    budgets = current_user.budgets.includes(:entries)
+    budgets = current_user.budgets
     render :json => budgets
+  end
+
+  # GET /budgets/with_entries
+  # Gets a list of the current user's budgets, including their entries
+  def with_entries
+    budgets = current_user.budgets.includes(:entries)
+    render :json => budgets.as_json(:include => :entries)
   end
 
   # GET /budgets/1
