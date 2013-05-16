@@ -6,7 +6,11 @@ UbudgetApi::Application.routes.draw do
       get 'with_entries'
     end
   end
-  resources :entries
+  resources :entries do
+    member do
+      get 'by_budget'
+    end
+  end
 
   # Cause all of the following errors to redirect to a handler
   match '/404', :to => "errors#not_found"
