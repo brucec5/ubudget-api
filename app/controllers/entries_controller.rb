@@ -13,6 +13,13 @@ class EntriesController < ApplicationController
     entry = Entry.find(params[:id])
     render :json => entry
   end
+  
+  # GET /entries/1/by_budget
+  # Gets all entries with a given budget id
+  def by_budget
+    entries = Entry.where(:budget_id => params[:budget_id])
+    render :json => entries
+  end
 
   # POST /entries
   # Creates a new entry, returning the ID in JSON.
