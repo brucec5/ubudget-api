@@ -17,7 +17,7 @@ class EntriesController < ApplicationController
   # GET /entries/1/by_budget
   # Gets all entries with a given budget id
   def by_budget
-    entries = Entry.where(:budget_id => params[:budget_id])
+    entries = Entry.where(:budget_id => params[:id])
     render :json => entries
   end
 
@@ -27,7 +27,7 @@ class EntriesController < ApplicationController
     entry = Entry.new(params.slice(:amount, :notes, :expenditure_date, :budget_id))
 
     if entry.save
-      render :json => { :id => entry.id }, :status => :created
+      render :json => entry, :status => :created
     else
       render :json => entry.errors, :status => :unprocessable_entity
     end
@@ -39,7 +39,7 @@ class EntriesController < ApplicationController
     entry = Entry.find(params[:id])
 
     if entry.update_attributes(params.slice(:amount, :notes, :expenditure_date, :budget_id))
-      render :json => { :updated => true }
+      render :json => entry
     else
       render :json => entry.errors, :status => :unprocessable_entity
     end
