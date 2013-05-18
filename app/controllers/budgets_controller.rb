@@ -29,7 +29,7 @@ class BudgetsController < ApplicationController
     budget.user = current_user
 
     if budget.save
-      render :json => { :id => budget.id }, :status => :created
+      render :json => budget, :status => :created
     else
       render :json => budget.errors, :status => :unprocessable_entity
     end
@@ -43,7 +43,7 @@ class BudgetsController < ApplicationController
     if budget.update_attributes(params.slice(:budget_name, :amount, :recur,
                                              :start_date, :recurrence_duration,
                                              :other_duration))
-      render :json => { :updated => true }
+      render :json => budget
     else
       render :json => entry.errors, :status => :unprocessable_entity
     end
