@@ -56,6 +56,6 @@ class BudgetsController < ApplicationController
 
     budget.destroy
 
-    render :json, { :destroyed => true }
+    render :json => { :destroyed => true }
   end
 end
