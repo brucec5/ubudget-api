@@ -52,6 +52,6 @@ class EntriesController < ApplicationController
 
     entry.destroy
 
-    render :json, { :destroyed => true }
+    render :json => { :destroyed => true }
   end
 end
