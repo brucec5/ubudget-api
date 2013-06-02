@@ -48,7 +48,7 @@ class EntriesController < ApplicationController
   # DELETE /budgets/1
   # Destroys a given entry
   def destroy
-    entry = Budget.find(params[:id])
+    entry = Entry.find(params[:id])
 
     entry.destroy
 
